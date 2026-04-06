@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Cabrito Flare';
+  src: url('/fonts/cabrito-flare-w05-ext-medium.woff2') format('woff2'),
+       url('/fonts/cabrito-flare-w05-ext-medium.woff') format('woff'),
+       url('/fonts/cabrito-flare-w05-ext-medium.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.letter-spacing-widest {
+  letter-spacing: 0.2em;
+}
+
+body {
+  @apply bg-surface font-body text-on-surface;
+}
