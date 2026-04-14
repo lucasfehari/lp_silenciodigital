@@ -3,9 +3,12 @@
     <HeroSection />
     <VSLSection />
     <PainPointSection />
+    <MarqueeSection />
+    <TransformationSection />
     <PillarsSection />
     <PricingSection />
     <FAQSection />
+    <CtaFinalSection />
   </div>
 </template>
 

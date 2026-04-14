@@ -1,6 +1,25 @@
 <template>
-  <section class="py-32 px-8" id="vsl">
-    <div class="max-w-6xl mx-auto">
+  <section class="py-32 px-8 relative overflow-hidden" id="vsl">
+    
+    <!-- Efeito RippleGrid (React Bits Port) atrás do VSL -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%] w-full h-full z-0 opacity-10">
+      <RippleGrid
+        :enableRainbow="false"
+        gridColor="#3C4C3B"
+        :rippleIntensity="0.05"
+        :gridSize="14"
+        :gridThickness="15"
+        :fadeDistance="0.5"
+        :vignetteStrength="0.5"
+        :glowIntensity="0.1"
+        :opacity="1"
+        :gridRotation="45"
+        :mouseInteraction="true"
+        :mouseInteractionRadius="0.9"
+      />
+    </div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
       <div class="text-center mb-16">
         <span class="font-mono text-[10px] tracking-[0.5em] text-on-surface/40 uppercase">O Próximo Passo</span>
         <h2 class="font-headline text-3xl md:text-4xl font-bold mt-4 tracking-tight">Assista ao vídeo abaixo e entenda o que está sabotando seu foco.</h2>

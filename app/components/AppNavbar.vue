@@ -1,7 +1,7 @@
 <template>
   <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl z-50">
     <div class="bg-surface-variant/40 backdrop-blur-2xl border border-white/5 rounded-full px-8 py-4 flex justify-between items-center shadow-2xl">
-      <span class="text-lg font-bold tracking-tighter text-secondary uppercase">Silêncio Digital</span>
+      <img src="~/assets/logo.svg" alt="" srcset="" class="w-40">
       <div class="hidden md:flex items-center space-x-10">
         <a class="text-xs font-mono uppercase tracking-widest text-on-surface/60 hover:text-secondary transition-colors" href="#vsl">O Método</a>
         <a class="px-6 py-2.5 bg-primary text-secondary text-[10px] font-bold tracking-[0.2em] uppercase rounded-full hover:bg-primary/80 transition-all active:scale-95" href="#pricing">Garantir Acesso</a>

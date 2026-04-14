@@ -2,7 +2,7 @@
   <footer class="bg-surface-variant/30 py-24 border-t border-outline">
     <div class="max-w-screen-2xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center">
       <div class="mb-12 md:mb-0">
-        <span class="text-2xl font-bold tracking-tighter text-secondary uppercase">Silêncio Digital</span>
+         <img src="~/assets/logo.svg" alt="" srcset="" class="w-40">
         <p class="text-xs font-mono text-on-surface/30 mt-4 tracking-widest uppercase">High Performance Mental Brand</p>
       </div>
       <div class="flex flex-col md:flex-row gap-12 items-center text-center md:text-left">
@@ -12,7 +12,7 @@
         </div>
         <div class="vertical-line h-8 hidden md:block"></div>
         <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-on-surface/20">
-          © 2024. Todos os direitos reservados.
+          {{ new Date().getFullYear() }} Todos os direitos reservados.
         </p>
       </div>
     </div>
