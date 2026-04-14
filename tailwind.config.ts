@@ -7,8 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary": "#3C4C3B", // Military Green
-        "secondary": "#D8C9A9", // Beige Highlight
+        "primary": "#3C4C3B", // Verde Militar
+        "secondary": "#D8C9A9", // Bege
+        "marrom": "#4E342E",
+        "grafite": "#3A3A3A",
+        "preto": "#000000",
         "surface": "#0F0F0F",
         "surface-variant": "#1A1A1A",
         "on-surface": "#E5E2E1",
@@ -18,7 +21,8 @@ export default {
       fontFamily: {
         "headline": ["Manrope", "sans-serif"],
         "body": ["Inter", "sans-serif"],
-        "mono": ["JetBrains Mono", "monospace"]
+        "mono": ["JetBrains Mono", "monospace"],
+        "cursive": ["Playfair Display", "serif"]
       },
     },
   },

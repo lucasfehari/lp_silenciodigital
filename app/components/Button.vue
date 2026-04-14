@@ -3,7 +3,7 @@
     <a 
       :href="href"
       :class="[
-        'group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-primary text-secondary px-12 py-5 font-bold tracking-[0.2em] uppercase transition-all duration-300',
+        'group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-primary text-secondary px-10 md:px-12 py-4 md:py-5 font-bold tracking-[0.2em] uppercase transition-all duration-300',
         'hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(202,238,187,0.4)] active:scale-95',
         className
       ]"

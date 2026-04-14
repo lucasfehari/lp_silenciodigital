@@ -1,7 +1,7 @@
 <template>
-  <section class="py-40 px-8">
+  <section class="py-20 md:py-32 px-6 md:px-8 bg-surface-variant/20 border-t border-marrom/10">
     <div class="max-w-3xl mx-auto">
-      <h2 class="font-headline text-3xl font-bold mb-20 text-center tracking-tight text-secondary uppercase tracking-[0.2em]">Perguntas Frequentes</h2>
+      <h2 class="font-headline text-3xl font-bold mb-12 md:mb-20 text-center tracking-tight text-secondary uppercase tracking-[0.2em]">Perguntas Frequentes</h2>
       <div class="space-y-4">
         <div 
           v-for="(item, index) in faqItems" 

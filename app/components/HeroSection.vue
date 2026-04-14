@@ -3,16 +3,15 @@
   
 
     <!-- Content -->
-    <div class="relative z-10 w-full max-w-screen-xl mx-auto px-6 sm:px-8 lg:px-12 py-40 lg:py-32">
+    <div class="relative z-10 w-full max-w-screen-xl mx-auto px-6 sm:px-8 lg:px-12 py-24 md:py-32 lg:py-40">
       <div class="grid md:grid-cols-5 gap-12 lg:gap-16 items-start">
 
         <!-- Left — Heading -->
         <div class="md:col-span-3">
-          <span class="font-mono text-[8px] tracking-[0.4em] text-secondary uppercase block mb-8 opacity-80">Arquitetura da Atenção</span>
           <h1 class="font-headline text-5xl sm:text-6xl md:text-5xl lg:text-[4.5rem] font-extrabold leading-[0.9] tracking-tighter">
             Reduza distrações, desenvolva
-            <span class="text-primary">foco sustentável</span>
-            e retome o controle da sua atenção — mesmo que você se distraia com facilidade.
+            <span class="text-secondary font-cursive italic font-medium">foco sustentável</span>
+            e retome o controle da sua atenção mesmo que você se distraia com facilidade.
           </h1>
           
 
@@ -40,7 +39,7 @@
           -->
           <img 
             src="~/assets/images/expert.png" 
-            class="relative z-10 object-contain object-bottom origin-bottom drop-shadow-2xl transition-transform duration-500 will-change-transform w-full max-w-[520px] md:max-w-none h-auto max-h-[70vh] md:max-h-[100vh] scale-105 md:scale-[1.9] lg:scale-[1.9] xl:scale-[1.9] md:translate-x-10 lg:translate-x-12 md:translate-y-60 lg:translate-y-60"
+            class="opacity-60 relative z-10 object-contain object-bottom origin-bottom drop-shadow-2xl transition-transform duration-500 will-change-transform w-full max-w-[480px] md:max-w-none h-auto max-h-[70vh] md:max-h-[100vh] scale-105 md:scale-[1.9] lg:scale-[1.9] xl:scale-[1.9] md:translate-x-10 lg:translate-x-12 md:translate-y-60 lg:translate-y-60"
             alt="Expert" 
           />
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white text-black py-4 overflow-hidden relative flex items-center shadow-lg">
+  <div class="bg-secondary text-marrom py-4 overflow-hidden relative flex items-center shadow-lg">
     <!-- Primeira fita -->
     <div class="whitespace-nowrap flex items-center shrink-0 animate-marquee">
       <div v-for="i in 15" :key="'a-' + i" class="flex items-center shrink-0">
