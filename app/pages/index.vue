@@ -1,7 +1,7 @@
 <template>
   <div>
-    <HeroSection />
     <VSLSection />
+    <HeroSection />
     <PainPointSection />
     <SecretSection />
     <MarqueeSection />
