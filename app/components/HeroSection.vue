@@ -21,7 +21,7 @@
            <!-- CTA -->
           <Button 
             text="QUERO DESENVOLVER FOCO" 
-            href="#pricing" 
+            href="https://pay.hotmart.com/S105322046I" 
             className="mt-10 lg:mt-12 w-full sm:w-auto"
             icon="arrow_forward"
           />

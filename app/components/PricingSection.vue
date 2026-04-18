@@ -97,7 +97,7 @@
                 <span class="text-on-surface font-light tracking-wide">7 dias de garantia incondicional</span>
               </div>
             </div>
-            <Button text="QUERO DESENVOLVER FOCO" className="w-full md:w-auto text-center" />
+            <Button text="QUERO DESENVOLVER FOCO" href="https://pay.hotmart.com/S105322046I" className="w-full md:w-auto text-center" />
           </div>
         </div>
 

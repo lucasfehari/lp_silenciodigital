@@ -4,7 +4,7 @@
       <img src="~/assets/logo.svg" alt="" srcset="" class="w-32 md:w-40">
       <div class="hidden md:flex items-center space-x-10">
         <a class="text-xs font-mono uppercase tracking-widest text-on-surface/60 hover:text-secondary transition-colors" href="#vsl">O Método</a>
-        <a class="px-6 py-2.5 bg-primary text-secondary text-[10px] font-bold tracking-[0.2em] uppercase rounded-sm hover:bg-primary/80 transition-all active:scale-95" href="#pricing">Garantir Acesso</a>
+        <a class="px-6 py-2.5 bg-primary text-secondary text-[10px] font-bold tracking-[0.2em] uppercase rounded-sm hover:bg-primary/80 transition-all active:scale-95" href="https://pay.hotmart.com/S105322046I">Garantir Acesso</a>
       </div>
       
       <!-- Mobile Menu Button -->

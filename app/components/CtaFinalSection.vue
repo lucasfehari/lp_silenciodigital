@@ -15,7 +15,7 @@
         <span class="block text-white font-medium text-2xl md:text-3xl mt-4">E retome o controle da sua vida.</span>
       </p>
       
-      <Button text="QUERO DESENVOLVER FOCO SUSTENTÁVEL" className="w-full sm:w-auto !bg-secondary !text-marrom hover:!bg-white" />
+      <Button text="QUERO DESENVOLVER FOCO SUSTENTÁVEL" href="https://pay.hotmart.com/S105322046I" className="w-full sm:w-auto !bg-secondary !text-marrom hover:!bg-white" />
     </div>
   </section>
 </template>
