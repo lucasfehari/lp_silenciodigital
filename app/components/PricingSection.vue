@@ -90,7 +90,7 @@
             <div class="flex-1 space-y-6">
               <div class="flex items-center gap-4">
                 <span class="material-symbols-outlined text-primary text-xl">verified</span>
-                <span class="text-on-surface font-light tracking-wide">Acesso por 1 ano</span>
+                <span class="text-on-surface font-light tracking-wide">Acesso por 180 dias</span>
               </div>
               <div class="flex items-center gap-4">
                 <span class="material-symbols-outlined text-primary text-xl">shield</span>
