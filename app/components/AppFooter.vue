@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-surface-variant/30 py-24 border-t border-outline">
     <div class="max-w-screen-2xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center">
-      <div class="mb-12 md:mb-0">
+      <div class="mb-12 md:mb-0 flex flex-col items-center md:items-start">
          <img src="~/assets/logo.svg" alt="" srcset="" class="w-40">
         <p class="text-xs font-mono text-on-surface/30 mt-4 tracking-widest uppercase">High Performance Mental Brand</p>
       </div>

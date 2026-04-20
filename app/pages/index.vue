@@ -1,16 +1,17 @@
 <template>
   <div>
     <VSLSection />
-    <HeroSection />
-    <PainPointSection />
-    <SecretSection />
-    <MarqueeSection />
-    <TransformationSection />
-    <PillarsSection />
-    <ModulesSection />
-    <PricingSection />
-    <FAQSection />
-    <CtaFinalSection />
+    <!-- Lazy load reduz drásticamente o JavaScript inicial e a lentidão no SSR -->
+    <LazyHeroSection />
+    <LazyPainPointSection />
+    <LazySecretSection />
+    <LazyMarqueeSection />
+    <LazyTransformationSection />
+    <LazyPillarsSection />
+    <LazyModulesSection />
+    <LazyPricingSection />
+    <LazyFAQSection />
+    <LazyCtaFinalSection />
   </div>
 </template>
 

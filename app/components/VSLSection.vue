@@ -1,21 +1,6 @@
 <template>
   <section class="py-20 md:py-32 px-6 md:px-8 relative overflow-hidden" id="vsl">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%] w-full h-full z-0 opacity-10">
-      <RippleGrid
-        :enableRainbow="false"
-        gridColor="#3C4C3B"
-        :rippleIntensity="0.05"
-        :gridSize="14"
-        :gridThickness="15"
-        :fadeDistance="0.5"
-        :vignetteStrength="0.5"
-        :glowIntensity="0.1"
-        :opacity="1"
-        :gridRotation="45"
-        :mouseInteraction="true"
-        :mouseInteractionRadius="0.9"
-      />
-    </div>
+
 
     <div class="max-w-6xl mx-auto relative z-10">
       <div class="text-center mb-16">
@@ -28,67 +13,52 @@
       <div class="relative group bg-surface-variant p-2 md:p-3 rounded-2xl overflow-hidden border border-white/5 shadow-2xl max-w-4xl mx-auto">
         <div class="aspect-video relative overflow-hidden rounded-xl bg-black">
 
-          <!--
-            FIX #3 - Carregamento Instantâneo (Video Top-of-page):
-            - Iframe renderiza imediatamente sem condition
-            - src dinâmico: inicia mutado, troca para unmuted no clique (fix Safari)
-          -->
-          <iframe
-            ref="iframeRef"
-            id="vsl-vimeo-iframe"
-            title="vimeo-player"
-            :src="iframeSrc"
-            width="640"
-            height="360"
-            frameborder="0"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-            allowfullscreen
-            class="w-full h-full"
-            @load="onIframeLoad"
-          ></iframe>
+          <!-- O Iframe pesa ZERO no carregamento inicial. Ele só existirá na página AQUI após o clique. -->
+          <ClientOnly>
+            <iframe
+              v-if="isPlaying"
+              ref="iframeRef"
+              id="vsl-vimeo-iframe"
+              title="vimeo-player"
+              :src="iframeSrc"
+              width="640"
+              height="360"
+              frameborder="0"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+              allowfullscreen
+              class="w-full h-full absolute inset-0 z-10"
+              @load="onIframeLoad"
+            ></iframe>
+          </ClientOnly>
 
-          <!--
-            FIX #1 - Safari iOS: overlay dispara troca de src do iframe
-            FIX #2 - Overlay compacto no mobile
-          -->
+          <!-- NOVA FACADE "HIGH-TICKET": Imagem + Ícone Retangular -->
+          <!-- Some automaticamente e suavemente assim que clicado -->
           <Transition
-            enter-active-class="transition duration-500 ease-out"
-            enter-from-class="opacity-0"
-            enter-to-class="opacity-100"
-            leave-active-class="transition duration-400 ease-in"
+            leave-active-class="transition duration-700 ease-in"
             leave-from-class="opacity-100"
             leave-to-class="opacity-0"
           >
             <div
-              v-if="isMuted"
-              @click="unmuteVideo"
-              class="absolute inset-0 z-40 flex items-center justify-center bg-black/60 backdrop-blur-[4px] cursor-pointer"
+              v-if="!isPlaying"
+              @click="playVideo"
+              class="absolute inset-0 z-20 flex items-center justify-center cursor-pointer group bg-surface-variant overflow-hidden"
               role="button"
-              aria-label="Clique para assistir com áudio"
+              aria-label="Clique para assistir ao vídeo"
             >
-              <!-- Card compacto, funciona bem em 320px+ -->
-              <div class="flex flex-col items-center gap-3 px-5 py-5 bg-surface-variant/50 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-xl mx-4 max-w-[260px] w-full">
+              <!-- A Imagem de Fundo (Thumbnail) -->
+              <!-- Nota: Buscando thumb.png (ou mude a ext se upload foi jpg) -->
+              <img src="/images/thumb.png" alt="Video Thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" loading="eager" />
+              
+              <!-- Película suave para dar contraste -->
+              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-700"></div>
 
-                <!-- Ícone de play (SVG Inline para carregamento instantâneo 0ms) -->
-                <div class="relative w-12 h-12 rounded-full bg-primary flex items-center justify-center text-secondary shrink-0">
-                  <div class="absolute inset-0 rounded-full animate-ping bg-primary opacity-20"></div>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 relative z-10 translate-x-0.5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </div>
-
-                <div class="text-center">
-                  <p class="font-headline font-black text-base text-primary uppercase tracking-tight leading-tight">O Vídeo já começou!</p>
-                  <p class="font-mono text-[9px] text-white/70 uppercase tracking-[0.25em] mt-1">Toque para ver com áudio</p>
-                </div>
-
-                <!-- Barrinhas de áudio animadas -->
-                <div class="flex space-x-1 items-end h-3">
-                  <div class="w-1 bg-primary/40 animate-music-bar-1 rounded-sm"></div>
-                  <div class="w-1 bg-primary animate-music-bar-2 rounded-sm"></div>
-                  <div class="w-1 bg-primary/60 animate-music-bar-3 rounded-sm"></div>
-                </div>
+              <!-- Retângulo de play (opacidade baixa, branco) responsivo mobile -> desktop -->
+              <div class="relative z-30 flex items-center justify-center w-[100px] h-[70px] md:w-[140px] md:h-[90px] bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 rounded-2xl transition-all duration-300">
+                 <!-- Play icon in white -->
+                 <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 md:w-16 md:h-16 text-white fill-current translate-x-1" viewBox="0 0 24 24">
+                   <path d="M8 5v14l11-7z"/>
+                 </svg>
               </div>
             </div>
           </Transition>
@@ -104,19 +74,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
 const isLoaded = ref(false)
-const isMuted = ref(true)
+const isPlaying = ref(false)
 const iframeRef = ref<HTMLIFrameElement | null>(null)
 
 const videoID = '1184109650'
 const videoHash = '84b87b239e'
 
-/**
- * FIX #3 - Preconecta ao Vimeo assim que o componente monta,
- * sem carregar o iframe ainda — reduz latência de DNS + TLS
- */
+// Preconecta para adiantar DNS antes do usuário clicar
 const preconnectVimeo = () => {
   const origins = ['https://player.vimeo.com', 'https://i.vimeocdn.com', 'https://f.vimeocdn.com']
   origins.forEach(origin => {
@@ -128,66 +95,23 @@ const preconnectVimeo = () => {
   })
 }
 
-/**
- * FIX #1 - Safari iOS:
- * Estado controla se o src usa muted=1 (autoplay silencioso) ou muted=0 (após clique).
- * Trocar o src força o browser a recarregar o iframe como resultado de uma gesture,
- * o que satisfaz a política de autoplay do Safari e permite áudio.
- */
-const isUnmuted = ref(false)
-
 const iframeSrc = computed(() => {
-  if (isUnmuted.value) {
-    // Src sem muted — carregado APÓS clique do usuário (gesture válido para Safari)
-    return `https://player.vimeo.com/video/${videoID}?h=${videoHash}&title=0&byline=0&portrait=0&controls=1&vimeo_logo=0&autopause=0&autoplay=1&muted=0`
+  // src é nulo até o disparo. Ao clicar, carrega o player na melhor resolução do Auto com áudio ativado
+  if (isPlaying.value) {
+    return `https://player.vimeo.com/video/${videoID}?h=${videoHash}&title=0&byline=0&portrait=0&controls=1&vimeo_logo=0&autopause=0&autoplay=1&muted=0&dnt=1`
   }
-  // Src inicial — mutado para satisfazer política de autoplay sem interação
-  return `https://player.vimeo.com/video/${videoID}?h=${videoHash}&title=0&byline=0&portrait=0&controls=1&vimeo_logo=0&autopause=0&autoplay=1&muted=1`
+  return ''
 })
 
 const onIframeLoad = () => {
-  // Pequeno delay para o player interno do Vimeo inicializar
-  setTimeout(() => {
-    isLoaded.value = true
-  }, 300)
-
-  // Se já estava unmuted (segundo load após clique), esconde overlay
-  if (isUnmuted.value) {
-    isMuted.value = false
-  }
+  isLoaded.value = true
 }
 
-/**
- * FIX #1 - Lógica de unmute para Safari iOS:
- * Em vez de chamar APIs do SDK (bloqueadas pelo Safari sem gesture no elemento),
- * recriamos o iframe com muted=0 — o clique no overlay É a gesture necessária.
- */
-const unmuteVideo = () => {
-  // Guarda o tempo atual para retomar do mesmo ponto após reload do iframe
-  // Nota: não temos acesso ao currentTime via SDK aqui intencionalmente,
-  // pois o iframe será recriado. Reinicia do início para não perder conteúdo.
-  isLoaded.value = false
-  isUnmuted.value = true
-  // Vue vai recriar o iframe com o novo src graças ao :src="iframeSrc"
-  // O @load vai setar isLoaded=true e isMuted=false
+const playVideo = () => {
+  isPlaying.value = true
 }
 
 onMounted(() => {
-  // Preconecta imediatamente domínios do Vimeo para acelerar downloads futuros (handshake SSL)
   preconnectVimeo()
 })
-
-onBeforeUnmount(() => {
-  // Limpeza caso necessário no futuro
-})
 </script>
-
-<style scoped>
-@keyframes music-bar {
-  0%, 100% { height: 4px; }
-  50% { height: 12px; }
-}
-.animate-music-bar-1 { animation: music-bar 0.8s ease-in-out infinite; }
-.animate-music-bar-2 { animation: music-bar 0.6s ease-in-out infinite; animation-delay: 0.1s; }
-.animate-music-bar-3 { animation: music-bar 1s ease-in-out infinite; animation-delay: 0.2s; }
-</style>

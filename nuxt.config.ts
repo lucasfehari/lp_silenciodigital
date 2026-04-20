@@ -29,16 +29,30 @@ export default defineNuxtConfig({
         { rel: 'dns-prefetch', href: 'https://f.vimeocdn.com' },
         { rel: 'dns-prefetch', href: 'https://i.vimeocdn.com' },
 
-        // Fontes
+        // Fontes Otimizadas (Não bloqueiam a renderização)
         {
-          rel: 'stylesheet',
+          rel: 'preload',
+          as: 'style',
           href: 'https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400..800;1,400..800&display=swap'
         },
-
-        // FIX ícones: Material Symbols estava faltando completamente
         {
           rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400..800;1,400..800&display=swap',
+          media: 'print',
+          onload: "this.media='all'"
+        },
+
+        // FIX ícones: Material Symbols estava faltando completamente e agora otimizado
+        {
+          rel: 'preload',
+          as: 'style',
           href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block'
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block',
+          media: 'print',
+          onload: "this.media='all'"
         }
       ]
     }

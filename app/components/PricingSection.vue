@@ -78,7 +78,7 @@
         
         <div class="flex flex-col items-center mb-16">
           <span class="text-on-surface/30 line-through text-lg mb-4 font-mono">De R$ 197</span>
-          <div class="flex items-baseline gap-4">
+          <div class="flex flex-col items-center md:flex-row md:items-baseline gap-2 md:gap-4">
             <span class="text-sm font-mono uppercase tracking-widest text-on-surface/60">Por apenas</span>
             <span class="text-[5rem] md:text-[7rem] font-bold text-secondary tracking-tighter leading-none">R$ 47</span>
           </div>
